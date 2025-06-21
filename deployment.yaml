@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fintech-api
+  namespace: tshepo      # <-- Specifies the 'tshepo' namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fintech-api
+  template:
+    metadata:
+      labels:
+        app: fintech-api
+    spec:
+      containers:
+      - name: fintech-api
+        image: fintech-transaction-api:v1  # Ensure the image name matches your built Docker image
+        ports:
+        - containerPort: 5000

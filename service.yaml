@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fintech-api-service
+  namespace: tshepo      # <-- Specifies the 'tshepo' namespace
+spec:
+  selector:
+    app: fintech-api
+  ports:
+    - protocol: TCP
+      port: 80         # Exposes port 80 externally
+      targetPort: 5000 # Forwards traffic to container port 5000
+  type: NodePort
